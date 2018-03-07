@@ -21,20 +21,17 @@
  <body >
 
 	<div class="container" class="container-fluid" >
-		<a href="">Se déconnecter</a></div>
+		<a href=""  ><img src="assets/dec.png" width="30"> </a></div>
 		<div class="row" >
 		<div class="col-sm-6 col-md-6 col-xs-12" >
 			<div class="row orangeprincipale">
 				<div class="row orange" >
 				<div class="col-md-8 col-xs-2">
-
-			<div><h1> OrangeMoney</h1></div>
+              <div><h1> OrangeMoney</h1></div></div></div>
 				<!-- modal de trafic -->
 				<div class="col-md-4 col-xs-2"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm"><span id="span">Trafic</span></button>
-				</div>
-				 </div>
-			    </div>
-			    </div>
+					 </div>
+			 
 				<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-sm" >
 					<div class="modal-content" id="modaltrafic">
@@ -81,10 +78,14 @@
 					    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 						</div>
 					   </div>
-					 					  <div class="row" id="modalmodal">
+					 	<div class="row" id="modalmodal">
 						<div class="col-sm-2">
 							<div id="idd">6</div>
 						</div>
+						<div class="form-check">
+					    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+						</div>
+
 									 <div class="modal-footer">
 						<button type="button" class="" onclick="valider()">Valider</button>
 						<button type="button" class="" data-dismiss="modal">Close</button>
@@ -107,26 +108,42 @@
 						<div class="col-sm-3">Etats</div>
 						<div class="col-sm-8">Les opérations</div>
 					</div>
-			<div class="row orange" >
+
+		<div class="row orange" >
 			<div class="col-sm-2">
 				<div id="idd">1</div>
-				<div id="idd">2</div>
-				<div id="idd">3</div>
-				<div id="idd">4</div>
-				<div id="idd">5</div>
-				<div id="idd">6</div>
-
-
 			</div>
+			
 <div class="col-sm-1">
 				<p class="stateChecker" style="width: 3rem ; height: 3rem ;"></p>
 			</div>
 			<div class="col-sm-3 col-xs-2">
 				<div>
-					<button type="button" id=test1 onclick="myFunction(1)"  data-toggle="modal" data-target="#exampleModal">
-						<span style="color:black;">Rechercher</span>
-					</button>
 					
+
+
+
+							<div class="modal-title titremod" id="" style="display:none;"></div>
+						<button type="button" name="rechercher" class="" id="recher" background-color:orange; margin:auto;"  onclick="myRecherche()"><span style="color:black;">Rechercher</span></button>
+
+					<div class="container">
+							<h2>Opérations</h2>
+								<table class="table table-bordered">
+									 <thead >
+										<tr>
+											<th  scope="col">Opération</th>
+											<th  scope="col">Numéro</th>
+											<th  scope="col">Montant</th>
+											<th  scope="col">Date</th>
+											<th  scope="col">Remonté</th>
+											<th  scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">	
+									</tbody>
+							</table>	
+						</div>
+
 				</div>
 			</div>
 
