@@ -17,3 +17,7 @@ $container['logger'] = function($c) {
     $logger->pushHandler($file_handler);
     return $logger;
 };
+
+
+
+

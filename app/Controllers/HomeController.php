@@ -14,8 +14,14 @@ class HomeController extends Controller {
 
   	public function accueil(Request $request, Response $response, $args){
   		header("Access-Control-Allow-Origin: *");
-        $this->_logger->addInfo("Fist Use");
-        $response = $this->view->render($response, 'index.php');
+  		if($request->getParsedBody()){ // verifie requete Post
+  			$this->_logger->addInfo("Fist Accueil");
+  			$response = $this->view->render($response, 'accueil.php');
+  		}
+  		else { //requte get
+  			$this->_logger->addInfo("Fist Use");
+	        $response = $this->view->render($response, 'index.php');
+  		}
         return $response;
     }
     
