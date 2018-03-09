@@ -98,47 +98,58 @@
 
 
 
-
-
 			<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document" >
-					<div class="modal-content tigo">
+					<div class="modal-content orange">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel"></h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-						</div></div></div></div>
-
-
-			<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document" >
-							<div class="modal-content">
-							<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							  <span aria-hidden="true">&times;</span>
-							</button>
+							<div class="modal-body">
+						<form name="monform">
+							<div class="form-row">
+								<div class="col" id="num">
+								Numéro<input type="number" name="numero" id="saisirnumero" class="form-control" placeholder="Numéro">
+								</div>
+								<div class="col" id="montt"><input type="number" name="montant" id="saisirmontant" class="form-control" placeholder="Montant">
+								</div>
 							</div>
+						</form>
+					</div>
+
+					<div class="modal-title titremod" id="" style="display:none;"></div>
+						<button type="button" name="recherchertigo" class="btn btn-primary tigo" id="recher" style="width:20%; margin:auto; background-color:blue;"  onclick="myRechercheorange()"><span style="color:black; ">Rechercher</span></button>
+						    </div>
 	                        </div>
 							</div>
 			                </div>
 
 					
 			<div class="modal-title titremod" id="" style="display:none;"></div>
-			<button type="button" id=test1 onclick="myFunctionorange(1)" class="button" data-toggle="modal" data-target="#exampleModal" ><span style="">Rechercher</span>
-            </button>
-            </div></div>
+		<button type="button" id="test1" onclick="myFunction(1)" class="" data-toggle="modal" data-target="#exampleModal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rechercher</font></font></button>
+ </div></div>
+
+
+
+
+
+
+
+
+
+
 
               <div class="col-sm-3">
-			  <button type="button" id="remonterorange" class="" data-toggle="modal" data-target=".bd-example-modal-lg"  >
+			  <button type="button" id="remonterorange" class="" data-toggle="modal" data-target=".bd-example-modal-lg" aria-label="Close" >
 			  <span style="color:black;">Remonter</span></button>
               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-lg">
 					<div class="modal-content" style="margin:20px;">
-						<form style="margin:20px;" method="POST" action="" class="form" enctype="multipart/form-data">
+						<form style="margin:20px;" method="POST" action="upload.php" onsubmit="return avatar();" enctype="multipart/form-data">
 						  <div class="form-group">
 							<label for="fichier"><i class="fa fa-upload" aria-hidden="true" style=""></i>Importer un fichier Excel</label>
+
 								<!--<input type="file" class="form-control-file" id="exampleFormControlFile1" accept=".doc,docx,x" onchange="myFunction11()"/>-->
 								<input id="fichierorange" name="fichier" class="form-control-file"  type="file" accept=".xls" ></br>
 								<input type="submit"  value="remonter" name="submit">
@@ -157,6 +168,39 @@
 			</div></div>
             <div class="col-sm-3 col-xs-2">
 			<div>
+
+						<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					   <div class="modal-dialog" role="document" >
+					   	<div class="modal-content orange">
+						<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+												<div class="modal-body">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="modal-title titremod" id="" style="display:none;"></div>
 			<button type="button" name="rechercherorange" class="" id="recher" background-color:orange; margin:auto;"  onclick="myRechercheorange()"><span style="color:black;">Rechercher</span></button>
             </div></div>
@@ -178,6 +222,9 @@
                      <div class="col-sm-2 col-xs-2">
                      <div ><button type="button" id=rn1 class="" onclick="reinitialiser(this)" ><span style="color:black;">Reinitialiser</span></button></div></div>
 		
+
+
+
 		<div class="col-sm-3">
 		    <div id="idd">3</div>
 		    <div class="col-sm-1">
@@ -289,9 +336,22 @@
 						</form>
                      </div></div></div></div>
                      <div class="col-sm-2 col-xs-2">
-                     <div ><button type="button" id=rn1 class="" onclick="reinitialiser(this)" ><span style="color:black;">Reinitialiser</span></button></div></div></button></div>
-			
-	
+                     <div ><button type="button" id=rn1 class="" onclick="reinitialiser(this)" ><span style="color:black;">Reinitialiser</span></button></div></div></button></div></div>
+
+				<div class="row tigo" style="background-color:green">
+				<div class="col-md-8 col-xs-3">
+               <h1 style="color:black;"> TigoCash</h1></div>
+				<div class="col-md-4 col-xs-2">
+				<button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm"><span id="span">Trafic</span></button>      
+
+
+				  <div class="col-sm-1" id="idphone" style="width:20px; color:black;">Id</div>
+					<div class="col-sm-3" style="color:black;">Etats</div>
+				  <div class="col-sm-8" style="color:black;">Les opérations</div>
+					</div>
+</div></div></div></div>
+
+
            
 </body>
 
