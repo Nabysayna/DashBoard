@@ -25,5 +25,13 @@ class HomeController extends Controller {
   		}
         return $response;
     }
+
+
+
+  public function essaie(Request $request, Response $response, $args){
+    header("Access-Control-Allow-Origin: *");
+    return $this->view->render($response, 'essaie.php'); 
+  }
+ 
     
 }

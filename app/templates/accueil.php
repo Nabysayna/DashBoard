@@ -16,14 +16,14 @@
 		<a href="logout.php">Se déconnecter</a></div>
 		<div class="row" >
 
-		<div  class="col-sm-6 col-md-6 col-xs-12" style="background-color:orange">
+		<div  class="col-sm-6 col-md-6 col-xs-12 col-lg-6" style="background-color:orange" style="border: 2px solid white;">
 			<div class="row orangeprincipale" >
 				<div class="row orange" style="background-color:" >
 				<div class="col-md-8 col-xs-1">
               <div><h1 style="color:black;"> OM</h1></div></div></div>
 
               <!-- modal de trafic -->
-				<div class="col-md-10 col-xs-1" align="right"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span></button>
+				<div class="col-md-10 col-xs-6 col-lg-10 col-sm-5" align="right"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span></button>
 					 </div>
 			 
 				<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -322,13 +322,13 @@
 
 
 
-		<div  class="col-sm-6 col-md-6 col-xs-12" style="background-color:green">
+		<div  class="col-sm-6 col-md-6 col-xs-12 col-lg-6" style="background-color:green">
 			<div class="row tigoprincipale" >
 				<div class="row tigo" style="background-color:" >
 				<div class="col-md-8 col-xs-1">
               <div><h1 style="color:black;"> TigoCash</h1></div></div></div></div>
 			<div>
-		<div class="col-md-10 col-xs-1" align="right"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span></button>
+		<div class="col-md-10 col-xs-6 col-lg-10 col-sm-5" align="right"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span></button>
 					 </div>
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="background-color:green">
 				  <div class="modal-dialog modal-sm" style="background-color:green">
@@ -615,7 +615,7 @@
 							</div>
 						</form>
 						</div></div></div></div>
-<div class="col-sm-2 col-xs-2">
+<div class="col-sm-2 col-xs-2 lg 2">
 <div ><button type="button" id=rn1 class="" onclick="reinitialiser(this)" ><span style="color:black;">Reinitialiser</span></button></div>
 </div>
 						</div>
