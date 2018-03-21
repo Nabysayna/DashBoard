@@ -1,5 +1,3 @@
-,
-
 <html lang="en">
   <head>
     <title>OPERATEURS</title>
@@ -23,8 +21,10 @@
               <div><h1 style="color:black;"> OM</h1></div></div></div>
 
               <!-- modal de trafic -->
-				<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" align="right"><button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span></button>
-					 </div>
+				<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" align="right">
+				<button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-sm" ><span id="span">Trafic</span>
+				</button>
+		     	</div>
 			 
 				<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-sm" style="background-color:black">
@@ -69,8 +69,8 @@
 					  <div class="form-check">
 					  </div>
                       <div class="modal-footer">
-						<button type="button" class="" onclick="valider()">Valider</button>
-						<button type="button" class="" data-dismiss="modal">Close</button>
+					  <button type="button" class="" onclick="valider()">Valider</button>
+					  <button type="button" class="" data-dismiss="modal">Close</button>
 					 </div>
 				     </div>
 			         </div>
@@ -103,14 +103,39 @@
 								<div class="col" id="num">
 								Numéro<input type="number" name="numero" id="saisirnumero" class="form-control" placeholder="Numéro">
 								</div>
-								<div class="col" id="montt"><input type="number" name="montant" id="saisirmontant" class="form-control" placeholder="Montant">
+								<div class="col" id="montt">
+								Montant <input type="number" name="montant"  id="saisirmontant" class="form-control" placeholder="Montant">
 								</div>
+
 							</div>
 						</form>
 					</div>
 
 					<div class="modal-title titremod" id="" style="display:none;"></div>
 						<button type="button" name="recherchertigo" class="btn btn-primary tigo" id="recher" style="width:20%; margin:auto; background-color:blue;"  onclick="myRechercheorange()"><span style="color:black; ">Rechercher</span></button>
+								<div class="container">
+							<h2>Opérations</h2>
+								
+								<table class="table table-bordered" >
+								
+									 <thead id="thead">
+										<tr>
+											<th id="">Opération</th>
+											<th id="">Numéro</th>
+											<th id="">Montant</th>
+											<th id="">Date</th>
+											<th id="">Remonté</th>
+											<th id="">Action</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+										
+									</tbody>
+									
+							</table>
+							
+							</div>
+
 						    </div>
 	                        </div>
 							</div>
