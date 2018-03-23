@@ -1,7 +1,11 @@
 <?php
 
-$app->get('/', App\Controllers\HomeController::class .':accueil');
+$app->get('/', App\Controllers\HomeController::class .':index');
 
-$app->post('/', App\Controllers\HomeController::class .':accueil');
+$app->get('/accueil', App\Controllers\HomeController::class .':accueil');
 
-$app->post('/qsh', App\Controllers\HomeController::class .':accueil');
+$app->get('/erreur', App\Controllers\HomeController::class .':erreur');
+
+$app->get('/essaie', App\Controllers\HomeController::class .':essaie');
+
+$app->post('/ajaxconnexion', App\Controllers\AjaxController::class .':connexion');

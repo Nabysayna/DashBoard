@@ -7,23 +7,39 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use \App\Controller;
 
-use \App\Models\UserModel;
-
 
 class HomeController extends Controller {
 
-  	public function accueil(Request $request, Response $response, $args){
-  		if($request->getParsedBody()){ // requete Post
-  			$this->_logger->addInfo("Page Accueil");
-  			$response = $this->view->render($response, 'accueil.php');
-  		}
-  		else { //requete get
-            $data = array('titlePage' => 'BBSINVEST');
-            $this->_logger->addInfo("Page Principal");
-	        $response = $this->view->render($response, 'index.php', $data);
-  		}
-
-        return $response;
+    public function index(Request $request, Response $response, $args){
+        $data = array('titlePage' => 'BBSINVEST');
+        $this->_logger->addInfo("Page Principal");
+        if(isset($_SESSION['authToken'])){
+            unset($_SESSION['authToken']);
+            return $this->view->render($response, 'index.php', $data);
+        }else{
+            return $this->view->render($response, 'index.php', $data);
+        }
     }
+
+    public function accueil(Request $request, Response $response, $args){
+        $data = array('titlePage' => 'BBSINVEST');
+        if(isset($_SESSION['authToken'])){
+            $this->_logger->addInfo("Page Accueil");
+            return $this->view->render($response, 'accueil.php', $data);
+        }else{
+            return $response->withRedirect('../');
+        }
+    }
+
+    public function erreur(Request $request, Response $response, $args){
+        unset($_SESSION['authToken']);
+        return $response->withRedirect('../');
+    }
+
+    public function essaie(Request $request, Response $response, $args){
+        header("Access-Control-Allow-Origin: *");
+        return $this->view->render($response, 'essaie.php');
+    }
+ 
     
 }
