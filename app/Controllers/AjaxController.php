@@ -42,6 +42,7 @@ class AjaxController extends Controller {
                 return json_encode($donnee);
             }
         }
+        return json_encode($data);
     }
 
 

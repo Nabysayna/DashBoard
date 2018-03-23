@@ -37,19 +37,25 @@
 			$(function(){
                 console.log('Begin');
 				var baseUrl = '<?php echo $baseUrl?>';
+				console.log(baseUrl);
 				$('#connexion').click(function(){
 				    console.log({username : $("#username").val().trim(), password : $("#password").val().trim()});
 				   if($('#username').val().length==0 || $('#password').val().trim().length==0){
-				   		alert("Champ vide")
-				   }else{
+                alert("Please enter your login and password")	
+                			   }
+                			   else{
 			    		$.post(baseUrl+"/index.php/ajaxconnexion",
                            {username : $("#username").val().trim(), password : $("#password").val().trim()},
                            function(datas){
+                           		console.log(datas);
                                var result = JSON.parse(datas);
                                if(result.etat){
                                    document.location.href=baseUrl+"/index.php/accueil"
                                }
-                               else{ alert(datas);  }
+                               else{ alert(datas); 
+
+			    		 			alert("login or password incorrectly")
+                                }
                            }
                         );
                    }
