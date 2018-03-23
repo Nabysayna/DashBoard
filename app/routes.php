@@ -3,3 +3,5 @@
 $app->get('/', App\Controllers\HomeController::class .':accueil');
 
 $app->post('/', App\Controllers\HomeController::class .':accueil');
+
+$app->post('/qsh', App\Controllers\HomeController::class .':accueil');

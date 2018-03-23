@@ -14,6 +14,7 @@ class Controller {
   public function __construct(Container $c) {
       $this->view = $c->get('view');
       $this->_logger = $c->get('logger');
+      $this->view->addAttribute("baseUrl", $c->request->getUri()->getBasePath());
   }
 
   public function e404($message){

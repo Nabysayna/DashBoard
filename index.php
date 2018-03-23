@@ -1,7 +1,4 @@
 <?php 
-       header('Access-Control-Allow-Origin','*');
-       header('Access-Control-Allow-Headers','content-type');
-
 define('DIR',__DIR__);
 
 
@@ -13,10 +10,8 @@ session_start();
 require 'config/default.php';
 $app = new \Slim\App($config);
 
-
 // Set up dependencies
 require DIR . '/app/dependencies.php';
-
 
 // Register routes
 require DIR . '/app/routes.php';

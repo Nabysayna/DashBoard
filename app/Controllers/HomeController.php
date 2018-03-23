@@ -13,15 +13,16 @@ use \App\Models\UserModel;
 class HomeController extends Controller {
 
   	public function accueil(Request $request, Response $response, $args){
-  		header("Access-Control-Allow-Origin: *");
-  		if($request->getParsedBody()){ // verifie requete Post
-  			$this->_logger->addInfo("Fist Accueil");
+  		if($request->getParsedBody()){ // requete Post
+  			$this->_logger->addInfo("Page Accueil");
   			$response = $this->view->render($response, 'accueil.php');
   		}
-  		else { //requte get
-  			$this->_logger->addInfo("Fist Use");
-	        $response = $this->view->render($response, 'index.php');
+  		else { //requete get
+            $data = array('titlePage' => 'BBSINVEST');
+            $this->_logger->addInfo("Page Principal");
+	        $response = $this->view->render($response, 'index.php', $data);
   		}
+
         return $response;
     }
     

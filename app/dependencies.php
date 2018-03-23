@@ -8,8 +8,11 @@ $container = $app->getContainer();
 // Service providers
 // --------------------------------------------------------------
 
-$container['view'] = new \Slim\Views\PhpRenderer(DIR . '/app/templates/');
-
+$container['view'] =
+$container['view'] = function($c) {
+    $view = new \Slim\Views\PhpRenderer(DIR . '/app/templates/');
+    return $view;
+};
 // monolog
 $container['logger'] = function($c) {
     $logger = new \Monolog\Logger('my_logger');
