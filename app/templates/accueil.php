@@ -1,12 +1,12 @@
 <html lang="en">
-  <head>
-    <title>OPERATEURS</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
+  	<head>
+	    <title>OPERATEURS</title>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    
+         <script src="../assets/jquery-2.2.1.min.js"></script>
     </head>
     <body >
 	<div class="container" class="container-fluid" >
@@ -648,8 +648,7 @@
 		 </div>
 
          </body>
-         <script src="http://code.jquery.com/jquery.js"></script>
-	     <script src="assets/bootstrap/js/bootstrap.js"></script>
+	     <script src="../assets/bootstrap/js/bootstrap.js"></script>
          </html>
 
 

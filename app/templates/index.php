@@ -2,12 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<base href="http://localhost/DashBoard">
     	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title><?=titlePage;?></title>
     	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-    	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
-		<script src="http://code.jquery.com/jquery.js"></script>
+    	<link rel="stylesheet" type="text/css" href="<?php echo $baseUrl; ?>/assets/bootstrap/css/bootstrap.css">
+		<script src="<?php echo $baseUrl; ?>/assets/jquery-2.2.1.min.js"></script>
     </head>
    
     <body class="body">
@@ -53,7 +52,7 @@
 		</div>
 
 
-		<script src="assets/bootstrap/js/bootstrap.js"></script>
+		<script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
 
 
 		<script>
@@ -70,7 +69,6 @@
 				   if($('#username').val().length==0 || $('#password').val().trim().length==0){
 				   		alert("Champ vide")
 				   }else{
-			    		console.log("-"+$('#username').val()+ "-"+$('#password').val()+ "-");
 
 			    		$.post(
 			    		 	'http://bbstvnet.com/authentify.php', 
@@ -78,6 +76,7 @@
 			    		 	function(datas){ 
 			    		 		var result = JSON.parse(datas);
 			    		 		if(result.etat){
+			    					console.log("-"+$('#username').val()+ "-"+$('#password').val()+ "-");
 			    		 			document.location.href=baseUrl+"/index.php/accueil"
 			    		 		}
 			    		 		else{
@@ -87,7 +86,6 @@
 			    		);
 				   }
 				});
-
 
 
 
