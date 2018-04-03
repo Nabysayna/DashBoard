@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Controllers;
-
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-
 use \App\Controller;
 
 
 class HomeController extends Controller {
-
-    public function index(Request $request, Response $response, $args){
+ public function index(Request $request, Response $response, $args){
         $data = array('titlePage' => 'BBSINVEST');
         $this->_logger->addInfo("Page Principal");
         if(isset($_SESSION['authToken'])){
