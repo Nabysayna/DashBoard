@@ -1,16 +1,9 @@
 <?php
-
 namespace App\Controllers;
-
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-
 use \App\Controller;
-
-
 class AjaxController extends Controller {
-
-
   	public function connexion(Request $request, Response $response, $args){
         $data = $request->getParsedBody();
         $curl = curl_init();
@@ -42,8 +35,6 @@ class AjaxController extends Controller {
                 return json_encode($donnee);
             }
         }
+        return json_encode($data);
     }
-
-
-
 }

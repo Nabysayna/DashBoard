@@ -9,7 +9,6 @@
 
 		<script src="<?php echo $baseUrl; ?>/assets/jquery-2.2.1.min.js"></script>
     </head>
-   
     <body class="container">
 		<h1 class="h1login" align="center" style="margin-top: 5rem; margin-bottom: 2rem">Connexion</h1>
 		<div class="row">
@@ -32,17 +31,15 @@
             </div>
 		</div>
 
-
-		<script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
+        <script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
 		<script>
 			$(function(){
-                console.log('Begin');
-				var baseUrl = '<?php echo $baseUrl?>';
+                var baseUrl = '<?php echo $baseUrl?>';
 				$('#connexion').click(function(){
-				    console.log({username : $("#username").val().trim(), password : $("#password").val().trim()});
-				   if($('#username').val().length==0 || $('#password').val().trim().length==0){
-				   		alert("Champ vide")
-				   }else{
+				    if($('#username').val().length==0 || $('#password').val().trim().length==0){
+                        alert("Please enter your login and password")
+                    }
+                    else{
 			    		$.post(baseUrl+"/index.php/ajaxconnexion",
                            {username : $("#username").val().trim(), password : $("#password").val().trim()},
                            function(datas){
@@ -53,7 +50,7 @@
                                else{ alert(datas);  }
                            }
                         );
-                   }
+                    }
 				});
 	        });
 		</script>
