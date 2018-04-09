@@ -13,16 +13,19 @@
 		<h1 class="h1login" align="center" style="margin-top: 5rem; margin-bottom: 2rem">Connexion</h1>
 		<div class="row">
             <div class="col-sm-4" style="margin: 0 auto; text-align: center">
+                <div class="alert alert-danger" role="alert" style="margin: 0 auto; text-align: center;margin-bottom: 2rem; display: none; ">
+                    login ou mot de passe incorrecte!
+                </div>
                 <div class="form-group row">
                     <label for="username" class="col-sm-3 col-form-label">Username</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="username" placeholder="Username" id="username" required/>
+                        <input type="text"  class="form-control enfocus" name="username" placeholder="Username" id="username" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-sm-3 col-form-label">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password"  name="password" placeholder="Password" required/>
+                        <input type="password" class="form-control enfocus" id="password"  name="password" placeholder="Password" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -35,6 +38,9 @@
 		<script>
 			$(function(){
                 var baseUrl = '<?php echo $baseUrl?>';
+        $('.enfocus').on('focus', function(){
+          $('.alert-danger').css('display','none') ;
+        })      
 				$('#connexion').click(function(){
 				    if($('#username').val().length==0 || $('#password').val().trim().length==0){
                         alert("Please enter your login and password")
@@ -47,7 +53,10 @@
                                if(result.etat){
                                    document.location.href=baseUrl+"/index.php/accueil"
                                }
-                               else{ alert(datas);  }
+                               else{
+                                //alert(datas);
+                                $('.alert-danger').css('display','block') ; 
+                              }
                            }
                         );
                     }
