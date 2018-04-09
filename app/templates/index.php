@@ -10,13 +10,18 @@
 		<script src="<?php echo $baseUrl; ?>/assets/jquery-2.2.1.min.js"></script>
     </head>
     <body class="container">
+      <div id="verifyconnction" class="alert alert-warning" role="alert" style="position: relative; z-index: 2; width: 100%; margin: 0 auto; text-align: center; display: none; "> Pas de connection </div>
+
 		<h1 class="h1login" align="center" style="margin-top: 5rem; margin-bottom: 2rem">Connexion</h1>
-    <div class="alert alert-danger" role="alert" style="margin: 0 auto; text-align: center; margin-left: 25rem; margin-right: 25rem; margin-bottom: 2rem; display: none; ">
- login ou mot de passe incorrecte!
-  
-</div>
+    
 		<div class="row">
             <div class="col-sm-4" style="margin: 0 auto; text-align: center">
+                
+                <div class="alert alert-danger" role="alert" style="margin: 0 auto; text-align: center; margin-bottom: 2rem; display: none; ">login ou mot de passe incorrecte!</div>
+                 <div class="alert alert-warning" role="alert" style="margin: 0 auto; text-align: center; margin-bottom: 2rem; display: none; ">entrez votre login et votre mot de passe svp!</div>
+                
+                <div id="loading" class="form-group row center-block" style="margin-top: -5rem; width: 100%; text-align: center; position: absolute; z-index: 2; opacity: 0.5; display:none;"><img class="center-block" src="<?=$baseUrl;?>/assets/imgs/ajax_loader.gif"/></div>
+                
                 <div class="form-group row">
                     <label for="username" class="col-sm-3 col-form-label">Username</label>
                     <div class="col-sm-9">
@@ -35,34 +40,50 @@
             </div>
 		</div>
 
-        <script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
+    <script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
 		<script>
 			$(function(){
-                var baseUrl = '<?php echo $baseUrl?>';
+        var baseUrl = '<?php echo $baseUrl?>';
+        var compteur=0;
+        setInterval(function () {
+          if(!navigator.onLine){
+            compteur++;
+  
+            $('#verifyconnction').css('display','block');
+          }else{
+            $('#verifyconnction').css('display','none');
+          }
+          console.log(navigator.onLine)
+        }, 1000)
+
+
         $('.enfocus').on('focus', function(){
           $('.alert-danger').css('display','none') ;
-        })      
+          $('.alert-warning').css('display','none') ;
+        }) 
 				$('#connexion').click(function(){
-				    if($('#username').val().length==0 || $('#password').val().trim().length==0){
-                        alert("Please enter your login and password")
-                    }
-                    else{
-			    		$.post(baseUrl+"/index.php/ajaxconnexion",
-                           {username : $("#username").val().trim(), password : $("#password").val().trim()},
-                           function(datas){
-                               var result = JSON.parse(datas);
-                               if(result.etat){
-                                   document.location.href=baseUrl+"/index.php/accueil"
-                               }
-                               else{
+          if($('#username').val().length==0 || $('#password').val().trim().length==0){
+            $('.alert-warning').css('display','block') ; 
+          }
+          else{
+            $('#loading').css('display','block') ; 
+          	$.post(baseUrl+"/index.php/ajaxconnexion",{username : $("#username").val().trim(), password : $("#password").val().trim()}, function(datas){
+              $('#loading').css('display','none') ; 
+              var result = JSON.parse(datas);
+              if(result.etat){
+                document.location.href=baseUrl+"/index.php/accueil"
+              }
+              else{
                                 //alert(datas);
-                                $('.alert-danger').css('display','block') ; 
-                              }
-                           }
-                        );
-                    }
+                $('.alert-danger').css('display','block') ; 
+              }
+            });
+          }
 				});
-	        });
+	    });
+
+    
 		</script>
 	</body>
 </html>
+
