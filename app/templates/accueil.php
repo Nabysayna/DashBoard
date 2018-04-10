@@ -1,5 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
+
   	<head>
 	    <title><?=$titlePage;?></title>
 	    <meta charset="utf-8">
@@ -10,16 +13,15 @@
         <script src="../assets/jquery-2.2.1.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-light bg-light justify-content-between">
+        <nav class="navbar navbar-light bg-light justify-content-between" style="background-color: black">
             <a class="navbar-brand">Accueil</a>
             <form class="form-inline" method="get" action="<?php echo $baseUrl; ?>/erreur">
                 <button class="btn btn-outline-success btn-sm" type="submit">Se déconnecter</button>
             </form>
         </nav>
-
-        <div class="row" style="margin-top:2rem; margin-right:0.5rem; margin-left:0.5rem">
-            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem">
-                <h4 style="text-align: center; color:black;padding-top: 1rem">Orange Money</h4>
+        <div class="row" style="margin-top:2rem; margin-right:0.5rem; margin-left:0.5rem" id="result">
+            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem" onmousemove="hoverorange()" onmouseleave="onmouseorange()">
+             <h4 style="text-align: center; color:black;padding-top: 1rem">Orange Money</h4></>
                 <div class="row" style="margin-top: 2rem;">
                     <div class="col-sm-12 col-xs-12">
                         <table class="table table-sm" style="text-align: center;">
@@ -35,9 +37,9 @@
                             <tr>
                                 <th><?=$id;?></th>
                                 <td>-</td>
-                                <td><button class="btn btn-primary btn-sm" title="Rechercher OM" onclick="validerRechercherModal('OM',<?=$id;?>)"><i class="fa fa-search-plus" aria-hidden="true"></i></button></td>
-                                <td><button class="btn btn-primary btn-sm" title="Remonter OM" onclick="validerRemonterModal('OM',<?=$id;?>)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></td>
-                                <td><button class="btn btn-primary btn-sm" title="Reinitialiser OM" onclick="validerReinitialiserModal('OM',<?=$id;?>)"><i class="fa fa-refresh" aria-hidden="true"></i></button></td>
+                                <td><button class="btn btn-primary btn-sm" title="Rechercher OM" onclick="validerRechercherModal('OM',<?=$id;?>)" style="background-color: black; border-color: black"><i class="fa fa-search-plus" aria-hidden="true" style="background-color: black"></i></button></td>
+                                <td><button class="btn btn-primary btn-sm" style="background-color: black; border-color: black" title="Remonter OM" onclick="validerRemonterModal('OM',<?=$id;?>)"><i style="background-color: black" class="fa fa-arrow-up" aria-hidden="true"></i></button></td>
+                                <td><button style="background-color: black; border-color: black" class="btn btn-primary btn-sm" title="Reinitialiser OM" onclick="validerReinitialiserModal('OM',<?=$id;?>)"><i style="background-color: black" class="fa fa-refresh" aria-hidden="true"></i></button></td>
                             </tr>
                             <?php } ?>
                             </tbody>
@@ -45,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5 offset-sm-1" style="background-color: green;">
+            <div class="col-sm-5 offset-sm-1" style="background-color: green;margin-bottom: 1rem" onmousemove="hovertigo()" onmouseleave="onmousetigo()">
                 <h4 style="text-align:center; color:black; padding-top:1rem">Tigo Cash</h4>
                 <div class="row" style="margin-top:2rem">
                     <div class="col-sm-12 col-xs-12"  style="text-align:center;">
@@ -131,6 +133,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                           <div class="alert alert-info" role="alert" style="margin: 0 auto; text-align: center; margin-bottom: 2rem; display: none; ">Vérifier l'extension de votre fichier</div>
                             <label for="fichier"><i class="fa fa-upload" aria-hidden="true" style=""></i>Importer un fichier Excel</label>
                             <input id="fichier" name="fichier" class="form-control-file"  type="file" accept=".xls.xlsx" ></br>
                             <button class="btn btn-primary btn-sm" onclick="validerUploads()">Valider</button>
@@ -155,7 +158,6 @@
                 </div>
             </div>
         </div>
-
 
         <script src="../assets/bootstrap/js/bootstrap.js"></script>
         <script>var baseUrl = '<?php echo $baseUrl?>';</script>

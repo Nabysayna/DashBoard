@@ -110,9 +110,38 @@ function validerUploads(){
         processData: false,
         data: form_data,
         type: 'post',
-        success: function(php_script_response){
-            alert(php_script_response);
+        success: function(response){
+            console.log(JSON.parse(response));
+            var result = JSON.parse(response);
+            if(result.extension){
+                console.log("correct")
+            }else{
+                console.log("false")
+                   $('.alert-info').css('display','block') ;
+
+            }
         }
     });
+}
+
+function validerRemonterModal(type,id){
+    console.log("validerRemonter"+type+" "+id);
+    $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
+    $('#modalRemonter').modal('show');
+}
+
+
+
+function hoverorange(){
+    $("body").css('background-color','orange')
+}
+function onmouseorange(){
+    $("body").css('background-color','white')
+}
+function hovertigo(){
+    $("body").css('background-color','green')
+}
+function onmousetigo(){
+    $("body").css('background-color','white')
 }
 
