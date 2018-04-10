@@ -96,3 +96,16 @@ function validerReinitialiserModal(type,id){
     $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
     $('#modalReinitialiser').modal('show');
 }
+
+function hoverorange(){
+    $("body").css('background-color','orange')
+}
+function onmouseorange(){
+    $("body").css('background-color','white')
+}
+function hovertigo(){
+    $("body").css('background-color','green')
+}
+function onmousetigo(){
+    $("body").css('background-color','white')
+}
