@@ -85,12 +85,23 @@ function validerRechercherBtn(){
     }
 }
 
+function validerRemonterModal(type,id){
+    console.log("validerRemonter"+type+" "+id);
+    $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
+    $('#modalRemonter').modal('show');
+}
+
+function validerReinitialiserModal(type,id){
+    console.log("validerRechercher "+type+" "+id);
+    $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
+    $('#modalReinitialiser').modal('show');
+}
+
 function validerUploads(){
     console.log("validerUploads");
     var file_data = $('#fichier').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file', file_data);
-    alert(form_data);
     $.ajax({
         url: baseUrl+"/ajax/importfile",
         dataType: 'text',
@@ -103,17 +114,5 @@ function validerUploads(){
             alert(php_script_response);
         }
     });
-}
-
-function validerRemonterModal(type,id){
-    console.log("validerRemonter"+type+" "+id);
-    $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
-    $('#modalRemonter').modal('show');
-}
-
-function validerReinitialiserModal(type,id){
-    console.log("validerRechercher "+type+" "+id);
-    $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
-    $('#modalReinitialiser').modal('show');
 }
 
