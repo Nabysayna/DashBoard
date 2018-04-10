@@ -133,8 +133,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                           <div class="alert alert-info" role="alert" style="margin: 0 auto; text-align: center; margin-bottom: 2rem; display: none; ">Vérifier l'extension de votre fichier</div>
                             <label for="fichier"><i class="fa fa-upload" aria-hidden="true" style=""></i>Importer un fichier Excel</label>
-                            <input id="fichier" name="fichier" class="form-control-file"  type="file" accept=".xls" ></br>
+                            <input id="fichier" name="fichier" class="form-control-file"  type="file" accept=".xls.xlsx" ></br>
                             <button class="btn btn-primary btn-sm" onclick="validerUploads()">Valider</button>
                         </div>
                     </div>
