@@ -14,5 +14,6 @@ $app->group('/ajax', function () {
 
     $this->post('/rechercheom', App\Controllers\AjaxController::class .':rechercheom');
 
+    $this->post('/importfile',App\Controllers\UploadsController::class .':importfile');
 
 });
