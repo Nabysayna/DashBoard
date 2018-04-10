@@ -130,9 +130,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4><i class="fa fa-upload" aria-hidden="true" style=""></i> Importer un fichier Excel</h4>
-                        <input id="fichierorange" name="fichier" class="form-control-file"  type="file" accept=".xls" ></br>
-                        <input type="submit"  value="remonter" name="submit" class="btn btn-primary btn-sm">
+                        <div class="form-group">
+                            <label for="fichier"><i class="fa fa-upload" aria-hidden="true" style=""></i>Importer un fichier Excel</label>
+                            <input id="fichier" name="fichier" class="form-control-file"  type="file" accept=".xls" ></br>
+                            <button class="btn btn-primary btn-sm" onclick="validerUploads()">Valider</button>
+                        </div>
                     </div>
                 </div>
             </div>

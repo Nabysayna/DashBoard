@@ -85,6 +85,26 @@ function validerRechercherBtn(){
     }
 }
 
+function validerUploads(){
+    console.log("validerUploads");
+    var file_data = $('#fichier').prop('files')[0];
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    alert(form_data);
+    $.ajax({
+        url: baseUrl+"/ajax/importfile",
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(php_script_response){
+            alert(php_script_response);
+        }
+    });
+}
+
 function validerRemonterModal(type,id){
     console.log("validerRemonter"+type+" "+id);
     $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
@@ -96,3 +116,4 @@ function validerReinitialiserModal(type,id){
     $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
     $('#modalReinitialiser').modal('show');
 }
+
