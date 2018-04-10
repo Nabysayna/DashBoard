@@ -18,7 +18,7 @@ class HomeController extends Controller {
     }
 
     public function accueil(Request $request, Response $response, $args){
-        $data = array('titlePage' => 'BBSINVEST');
+        $data = array('titlePage' => 'BBSINVEST Accueil', "nbreCallOM" => 4, "nbreCallTC" => 3);
         if(isset($_SESSION['authToken'])){
             $this->_logger->addInfo("Page Accueil");
             return $this->view->render($response, 'accueil.php', $data);
