@@ -2,7 +2,41 @@ $(function(){
     console.log('Begin 1');
     var typeP="";
     var idP=0;
+
+    setInterval(function () {
+        if(!navigator.onLine){
+            $('#verifyconnction').css('display','block');
+        }else{
+            $('#verifyconnction').css('display','none');
+        }
+    }, 1000)
+
+
+    $('.enfocus').on('focus', function(){
+        $('.alert-danger').css('display','none') ;
+        $('.alert-warning').css('display','none') ;
+    })
 })
+
+function connexion() {
+    if($('#username').val().length==0 || $('#password').val().trim().length==0){
+        $('.alert-warning').css('display','block') ;
+    }
+    else{
+        $('#loading').css('display','block') ;
+        $.post(baseUrl+"/index.php/ajaxconnexion",{username : $("#username").val().trim(), password : $("#password").val().trim()}, function(datas){
+            $('#loading').css('display','none') ;
+            var result = JSON.parse(datas);
+            if(result.etat){
+                document.location.href=baseUrl+"/index.php/accueil"
+            }
+            else{
+                //alert(datas);
+                $('.alert-danger').css('display','block') ;
+            }
+        });
+    }
+}
 
 function validerRechercherModal(type,id){
 	typeP=type;
