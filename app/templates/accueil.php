@@ -105,8 +105,8 @@
 									<th id="">Numéro</th>
 									<th id="">Mnt</th>
 									<th id="">Date</th>
-									<th id="">Rem</th>
-									<th id="">Action</th>
+									<th id="">Remonté</th>
+<!--									<th id="">Action</th>-->
 								</tr>
 							</thead>
                             <tbody id="tbody">

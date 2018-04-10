@@ -54,7 +54,7 @@ function traitementre(rec) {
     }
     chaine = chaine+"<td class=\Date\">"+tab[2]+"</td>";
     chaine = chaine+"<td><i class=\"fa fa-check\" aria-hidden=\"true\" style=\"color:#098a12;\"></i></td>";
-    chaine = chaine+"<td ><button id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
+    // chaine = chaine+"<td ><button id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
     chaine = chaine+"</tr>";
 
     $('#tbody').append(chaine);
