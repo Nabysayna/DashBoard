@@ -36,14 +36,13 @@ class AjaxController extends Controller {
                 return json_encode($donnee);
             }
         }
-        return json_encode($data);
     }
 
     public function rechercheom(Request $request, Response $response, $args){
         $data = $request->getParsedBody();
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://51.254.200.129/testkhady/rechercher.php",
+            CURLOPT_URL => "http://51.254.200.129/testAssane/rechercher.php",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -62,10 +61,46 @@ class AjaxController extends Controller {
         if ($err) {
             return $response->withJson(array('etat'=>false, 'message'=>"Erreur interne" ));
         } else {
-            return json_encode(array('etat'=>true, 'message'=>$res));
+            if($res=="\n\n"){
+                return json_encode(array('etat'=>true, 'message'=>'vide'));
+            }else{
+                return json_encode(array('etat'=>true, 'message'=>$res));
+            }
         }
-//        return json_encode($data);
     }
+
+    public function recherchetc(Request $request, Response $response, $args){
+        $data = $request->getParsedBody();
+//        $curl = curl_init();
+//        curl_setopt_array($curl, array(
+//            CURLOPT_URL => "http://51.254.200.129/testAssane/rechercher.php",
+//            CURLOPT_RETURNTRANSFER => true,
+//            CURLOPT_ENCODING => "",
+//            CURLOPT_MAXREDIRS => 10,
+//            CURLOPT_TIMEOUT => 30,
+//            CURLOPT_SSL_VERIFYPEER => 0,
+//            CURLOPT_SSL_VERIFYHOST => 0,
+//            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//            CURLOPT_CUSTOMREQUEST => "POST",
+//            CURLOPT_POSTFIELDS => $data,
+//            CURLOPT_HTTPHEADER => array(
+//                "content-type: multipart/form-data"
+//            )
+//        ));
+//
+//        $res = curl_exec($curl); $err = curl_error($curl); curl_close($curl);
+//        if ($err) {
+//            return $response->withJson(array('etat'=>false, 'message'=>"Erreur interne" ));
+//        } else {
+//            if($res=="\n\n"){
+//                return json_encode(array('etat'=>true, 'message'=>'vide'));
+//            }else{
+//                return json_encode(array('etat'=>true, 'message'=>$res));
+//            }
+//        }
+        return json_encode(array('etat'=>true, 'message'=>$data));
+    }
+
 
 
 }

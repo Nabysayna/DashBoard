@@ -20,8 +20,8 @@
             </form>
         </nav>
         <div class="row" style="margin-top:2rem; margin-right:0.5rem; margin-left:0.5rem" id="result">
-            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem" onmousemove="hoverorange()" onmouseleave="onmouseorange()">
-             <h4 style="text-align: center; color:black;padding-top: 1rem">Orange Money</h4></>
+            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem" onmousemove="hoverorange()">
+                <h4 style="text-align: center; color:black;padding-top: 1rem">Orange Money</h4>
                 <div class="row" style="margin-top: 2rem;">
                     <div class="col-sm-12 col-xs-12">
                         <table class="table table-sm" style="text-align: center;">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5 offset-sm-1" style="background-color: green;margin-bottom: 1rem" onmousemove="hovertigo()" onmouseleave="onmousetigo()">
+            <div class="col-sm-5 offset-sm-1" style="background-color: green;margin-bottom: 1rem" onmousemove="hovertigo()">
                 <h4 style="text-align:center; color:black; padding-top:1rem">Tigo Cash</h4>
                 <div class="row" style="margin-top:2rem">
                     <div class="col-sm-12 col-xs-12"  style="text-align:center;">
@@ -107,7 +107,7 @@
 									<th id="">Numéro</th>
 									<th id="">Mnt</th>
 									<th id="">Date</th>
-									<th id="">Remonté</th>
+									<th id="">Remonter</th>
 <!--									<th id="">Action</th>-->
 								</tr>
 							</thead>

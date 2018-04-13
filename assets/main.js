@@ -11,7 +11,6 @@ $(function(){
         }
     }, 1000)
 
-
     $('.enfocus').on('focus', function(){
         $('.alert-danger').css('display','none') ;
         $('.alert-warning').css('display','none') ;
@@ -48,47 +47,51 @@ function validerRechercherModal(type,id){
 }
 
 function getdatas(data){
-    rec = data.split("  ");
-    if (data.match("--")){
-        $('#tbody').html('');
-        rec.forEach(function(value){
-            traitementre(value);
-        });
+    if(data=='vide'){
+        $('#tbody').html('<div class="alert alert-warning" role="alert" style="margin: 0 auto; text-align: center; margin-bottom: 2rem; position: relative; display: none; ">Ce numero n\'existe pas dans notre base!</div>');
+    }else {
+        rec = data.split("  ");
+        if (data.match("--")){
+            $('#tbody').html('');
+            rec.forEach(function(value){
+                traitementre(value);
+            });
+        }else {
+        }
     }
+
 }
 
 function traitementre(rec) {
     var recunik = rec.split("--")[0].split("/");
     var tab= rec.split("--");
+    //console.log(recunik);
     var id_recunik = rec.split("--")[1];
-
     var chaine = "<tr id=\"roww-"+id_recunik+"\">";
 
     if(recunik[0]==1){
         chaine = chaine+"<td class=\"op\">depot</td>";
+        chaine = chaine+"<td class=\"numm\">"+recunik[2]+"</td>";
+        chaine = chaine+"<td class=\"mntt\">"+recunik[1]+"</td>";
     }
     if(recunik[0]==2){
         chaine = chaine+"<td class=\"op\">retrait</td>";
+        chaine = chaine+"<td class=\"numm\">"+recunik[1]+"</td>";
+        chaine = chaine+"<td class=\"mntt\">"+recunik[2]+"</td>";
     }
     if(recunik[0]==3){
         chaine = chaine+"<td class=\"op\">rac</td>";
+        chaine = chaine+"<td class=\"numm\">"+recunik[6]+"</td>";
+        chaine = chaine+"<td class=\"mntt\">"+recunik[7]+"</td>";
     }
     if(recunik[0]==5){
-        chaine = chaine+"<td class=\"op\">vente de credit</td>";
-    }
-    if(recunik[0]==1){
-        chaine = chaine+"<td class=\"numm\">"+recunik[2]+"</td>";
-    }else{
+        chaine = chaine+"<td class=\"op\">vdc</td>";
         chaine = chaine+"<td class=\"numm\">"+recunik[1]+"</td>";
-    }
-    if(recunik[0]==1){
-        chaine = chaine+"<td class=\"mntt\">"+recunik[1]+"</td>";
-    } else{
         chaine = chaine+"<td class=\"mntt\">"+recunik[2]+"</td>";
     }
     chaine = chaine+"<td class=\Date\">"+tab[2]+"</td>";
-    chaine = chaine+"<td><i class=\"fa fa-check\" aria-hidden=\"true\" style=\"color:#098a12;\"></i></td>";
-    // chaine = chaine+"<td ><button id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
+
+    chaine = chaine+"<td style=\"margin: 0 auto; text-align: center\"><button id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
     chaine = chaine+"</tr>";
 
     $('#tbody').append(chaine);
@@ -103,19 +106,21 @@ function validerRechercherBtn(){
 					mnt:$("#saisirmontant").val().trim(),
 					idp:idP
 				}, function(datas){
+                console.log(datas);
                 getdatas(JSON.parse(datas).message.trim());
             });
         }else{
-            $.post(baseUrl+"/ajax/rechercheom", {
+            $.post(baseUrl+"/ajax/recherchetc", {
                 num: $("#saisirnumero").val().trim(),
                 mnt:$("#saisirmontant").val().trim(),
                 idp:idP
             }, function(datas){
-                getdatas(JSON.parse(datas).message.trim());
+                console.log(datas);
+                //getdatas(JSON.parse(datas).message.trim());
             });
         }
     }else {
-        console.log("champ vide")
+        console.log("ko")
     }
 }
 
@@ -165,17 +170,11 @@ function validerRemonterModal(type,id){
 }
 
 
-
 function hoverorange(){
     $("body").css('background-color','orange')
-}
-function onmouseorange(){
-    $("body").css('background-color','white')
 }
 function hovertigo(){
     $("body").css('background-color','green')
 }
-function onmousetigo(){
-    $("body").css('background-color','white')
-}
+
 
