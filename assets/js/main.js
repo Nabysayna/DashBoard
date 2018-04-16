@@ -178,7 +178,7 @@ function traitementremonter(output) {
             $.each(value, function(key, value) {
                 if(value[5]=="Transaction" && value[6].match("Succ") && value[7]=="USSD" && value[9]=="Normal"){
                     var montant = value[4].match("Cash Out")?value[13]:value[12];
-                    montant = (montant.split(".")[0]);
+                    //montant = (montant.split(".")[0]);
                     datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant})
                 }
             });
