@@ -38,12 +38,86 @@ function connexion() {
 }
 
 function validerRechercherModal(type,id){
-	typeP=type;
-	idP=id;
+    typeP=type;
+    idP=id;
     $('.saisir').val('');
     $('#tbody').html('');
     $('#modalRechercherTitle').text("RECHERCHE "+type+" à la ligne "+id);
     $('#modalRechercher').modal('show');
+}
+
+function validerRechercherAllModal(type){
+    typeP=type;
+    $('.saisir').val('');
+    $('#tbodyAll').html('');
+    $('#modalRechercherAllTitle').text("RECHERCHE "+typeP);
+    $('#modalRechercherAll').modal('show');
+}
+
+function validerRechercherBtn(){
+    console.log("validerRechercherBtn"+typeP+" "+idP);
+    if( ($("#saisirnumero").val().trim().length!=0) && ($("#saisirmontant").val().trim().length!=0)){
+        if(typeP.match("OM")){
+            $.post(baseUrl+"/ajax/rechercheom", {
+                num: $("#saisirnumero").val().trim(),
+                mnt:$("#saisirmontant").val().trim(),
+                idp:idP
+            }, function(datas){
+                console.log(datas);
+                getdatas(JSON.parse(datas).message.trim());
+            });
+        }else{
+            $.post(baseUrl+"/ajax/recherchetc", {
+                num: $("#saisirnumero").val().trim(),
+                mnt:$("#saisirmontant").val().trim(),
+                idp:idP
+            }, function(datas){
+                console.log(datas);
+                //getdatas(JSON.parse(datas).message.trim());
+            });
+        }
+    }else {
+        console.log("ko")
+    }
+}
+
+function validerRechercherAllBtn(){
+    console.log("validerRechercherBtn "+typeP);
+
+    if( ($("#saisirnumeroAll").val().trim().length!=0) && ($("#saisirmontantAll").val().trim().length!=0)){
+        if(typeP.match("OM")){
+            $.post(baseUrl+"/ajax/rechercheallom", {
+                num: $("#saisirnumeroAll").val().trim(),
+                mnt:$("#saisirmontantAll").val().trim()
+            }, function(datas){
+                console.log(datas);
+            });
+        }else{
+            console.log($("#saisirnumeroAll").val().trim());
+        }
+    }else {
+        console.log("ko")
+    }
+}
+
+function validerRemonterALLModal(type){
+    typeP=type;
+    $('#modalRemonterTitle').text("REMONTER "+typeP)
+    $('#modalRemonter').modal('show');
+}
+
+function validerReinitialiserAll(type){
+    console.log("validerRechercher "+type);
+}
+
+function validerReinitialiserBtn(type,id){
+    console.log("validerReinitialiserBtn "+type+" "+id);
+}
+
+function validerReinitialiserModal(type,id){
+    console.log("validerRechercher "+type+" "+id);
+    $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
+    $('#modalReinitialiser').modal('show');
 }
 
 function getdatas(data){
@@ -59,7 +133,6 @@ function getdatas(data){
         }else {
         }
     }
-
 }
 
 function traitementre(rec) {
@@ -97,84 +170,13 @@ function traitementre(rec) {
     $('#tbody').append(chaine);
 }
 
-function validerRechercherBtn(){
-    console.log("validerRechercherBtn"+typeP+" "+idP);
-    if( ($("#saisirnumero").val().trim().length!=0) && ($("#saisirmontant").val().trim().length!=0)){
-        if(typeP.match("OM")){
-            $.post(baseUrl+"/ajax/rechercheom", {
-					num: $("#saisirnumero").val().trim(),
-					mnt:$("#saisirmontant").val().trim(),
-					idp:idP
-				}, function(datas){
-                console.log(datas);
-                getdatas(JSON.parse(datas).message.trim());
-            });
-        }else{
-            $.post(baseUrl+"/ajax/recherchetc", {
-                num: $("#saisirnumero").val().trim(),
-                mnt:$("#saisirmontant").val().trim(),
-                idp:idP
-            }, function(datas){
-                console.log(datas);
-                //getdatas(JSON.parse(datas).message.trim());
-            });
-        }
-    }else {
-        console.log("ko")
-    }
-}
-
-function validerRemonterModal(type,id){
-    console.log("validerRemonter"+type+" "+id);
-    $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
-    $('#modalRemonter').modal('show');
-}
-
-function validerReinitialiserModal(type,id){
-    console.log("validerRechercher "+type+" "+id);
-    $('#modalReinitialiserTitle').text("REINITIALISER "+type+" à la ligne "+id)
-    $('#modalReinitialiser').modal('show');
-}
-
-function validerUploads(){
-    console.log("validerUploads");
-    var file_data = $('#fichier').prop('files')[0];
-    var form_data = new FormData();
-    form_data.append('file', file_data);
-    $.ajax({
-        url: baseUrl+"/ajax/importfile",
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(response){
-            console.log(JSON.parse(response));
-            var result = JSON.parse(response);
-            if(result.extension){
-                console.log("correct")
-            }else{
-                console.log("false")
-                   $('.alert-info').css('display','block') ;
-
-            }
-        }
+function traitementremonter(output) {
+    console.log("traitementremonter "+ typeP);
+    var datas = [];
+    $.each(output, function(key, value) {
+        datas.push({key:key, value:value})
     });
+    console.log(datas);
+    $("#htmlout").html(Object.keys(output).length+" feuilles");
 }
-
-function validerRemonterModal(type,id){
-    console.log("validerRemonter"+type+" "+id);
-    $('#modalRemonterTitle').text("REMONTER "+type+" à la ligne "+id)
-    $('#modalRemonter').modal('show');
-}
-
-
-function hoverorange(){
-    $("body").css('background-color','orange')
-}
-function hovertigo(){
-    $("body").css('background-color','green')
-}
-
 

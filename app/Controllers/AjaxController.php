@@ -69,6 +69,11 @@ class AjaxController extends Controller {
         }
     }
 
+    public function rechercheallom(Request $request, Response $response, $args){
+        $data = $request->getParsedBody();
+        return json_encode(array('etat'=>true, 'message'=>$data));
+    }
+
     public function recherchetc(Request $request, Response $response, $args){
         $data = $request->getParsedBody();
 //        $curl = curl_init();

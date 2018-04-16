@@ -7,7 +7,7 @@
         <title><?=$titlePage;?></title>
     	<link rel="stylesheet" type="text/css" href="<?php echo $baseUrl; ?>/assets/bootstrap/css/bootstrap.css">
 
-		<script src="<?php echo $baseUrl; ?>/assets/jquery-2.2.1.min.js"></script>
+		<script src="<?php echo $baseUrl; ?>/assets/js/jquery-2.2.1.min.js"></script>
     </head>
     <body class="container">
       <div id="verifyconnction" class="alert alert-warning" role="alert" style="position: relative; z-index: 2; width: 100%; margin: 0 auto; text-align: center; display: none; "> Pas de connection </div>
@@ -43,7 +43,7 @@
 
         <script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
         <script>var baseUrl = '<?php echo $baseUrl?>';</script>
-        <script src="<?php echo $baseUrl; ?>/assets/main.js"></script>
+        <script src="<?php echo $baseUrl; ?>/assets/js/main.js"></script>
 	</body>
 </html>
 
