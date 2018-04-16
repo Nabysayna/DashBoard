@@ -173,10 +173,21 @@ function traitementre(rec) {
 function traitementremonter(output) {
     console.log("traitementremonter "+ typeP);
     var datas = [];
-    $.each(output, function(key, value) {
-        datas.push({key:key, value:value})
-    });
-    console.log(datas);
+    if(typeP=="OM"){
+        $.each(output, function(key, value) {
+            $.each(value, function(key, value) {
+                if(value[5]=="Transaction" && value[6].match("Succ") && value[7]=="USSD" && value[9]=="Normal"){
+                    var montant = value[4].match("Cash Out")?value[13]:value[12];
+                    montant = (montant.split(".")[0]);
+                    datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant})
+                }
+            });
+        });
+        console.log(datas);
+    }
+    else{
+        console.log("TC");
+    }
     $("#htmlout").html(Object.keys(output).length+" feuilles");
 }
 
