@@ -18,8 +18,10 @@ $(function(){
 })
 
 function connexion() {
+    $('#connexion').attr("disabled",true)
     if($('#username').val().length==0 || $('#password').val().trim().length==0){
         $('.alert-warning').css('display','block') ;
+            $('#connexion').attr("disabled",false)
     }
     else{
         $('#loading').css('display','block') ;
@@ -30,8 +32,8 @@ function connexion() {
                 document.location.href=baseUrl+"/index.php/accueil"
             }
             else{
-                //alert(datas);
                 $('.alert-danger').css('display','block') ;
+                $('#connexion').attr("disabled",false)
             }
         });
     }
@@ -177,7 +179,7 @@ function traitementremonter(output) {
         $.each(output, function(key, value) {
             $.each(value, function(key, value) {
                 if(value[5]=="Transaction" && value[6].match("Succ") && value[7]=="USSD" && value[9]=="Normal"){
-                    var montant = value[4].match("Cash Out")?value[13]:value[12];
+                    var montant = value[5].match("Cash Out")?value[13]:value[12];
                     //montant = (montant.split(".")[0]);
                     datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant})
                 }

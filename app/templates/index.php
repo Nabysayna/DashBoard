@@ -36,11 +36,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <button onclick="connexion()"  style="margin: 0 auto; text-align: right" class="btn btn-primary">Connexion</button>
+                    <button onclick="connexion()" id="connexion" style="margin: 0 auto; text-align: right" class="btn btn-primary">Connexion</button>
                 </div>
             </div>
 		</div>
-
+<script src="assets/bootstrap/js/bootstrap.js"></script>
+ 
         <script src="<?php echo $baseUrl; ?>/assets/bootstrap/js/bootstrap.js"></script>
         <script>var baseUrl = '<?php echo $baseUrl?>';</script>
         <script src="<?php echo $baseUrl; ?>/assets/js/main.js"></script>

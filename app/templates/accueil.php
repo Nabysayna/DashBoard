@@ -20,7 +20,7 @@
             </form>
         </nav>
         <div class="row" style="margin-top:2rem; margin-right:0.5rem; margin-left:0.5rem" id="result">
-            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem">
+            <div class="col-sm-5" style="background-color: orange; margin-bottom: 1rem;margin-right: 6rem;">
                 <h4 style="text-align: center; color:black;padding-top: 1rem">Orange Money</h4>
                 <div class="row" style="margin-top: 1rem;">
                     <div class="col-sm-12 col-xs-12" style="margin: 0 auto; text-align: center">
@@ -53,9 +53,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5 offset-sm-1" style="background-color: green;margin-bottom: 1rem">
+            <div class="col-sm-5 offset-sm-1" style="background-color: green;margin-bottom: 1rem;m= margin-right: 6rem;">
                 <h4 style="text-align:center; color:black; padding-top:1rem">Tigo Cash</h4>
-                <div class="row" style="margin-top:2rem">
+                <div class="row" style="margin-top:1rem;">
+                    <div class="col-sm-12 col-xs-12" style="text-align: center;padding-bottom: 2rem;">
+                        <button class="btn btn-primary btn-sm" title="Rechercher ALL TC" onclick="validerRechercherAllModal('TC')" style="background-color: blue; border-color: blue"><i class="fa fa-search-plus" aria-hidden="true" style="background-color: blue"></i> Rechercher</button>
+                            <button class="btn btn-primary btn-sm" style="background-color: blue; border-color: blue" title="Remonter ALL TC" onclick="validerRemonterALLModal('TC')"><i style="background-color: blue" class="fa fa-arrow-up" aria-hidden="true"></i> Remonter</button>
+                            <button style="background-color: blue; border-color: blue" class="btn btn-primary btn-sm" title="Reinitialiser ALL TC" onclick="validerReinitialiserAll('TC')"><i style="background-color: blue" class="fa fa-refresh" aria-hidden="true"></i> Réinitialiser</button>
+                    </div>
+                </div>
                     <div class="col-sm-12 col-xs-12"  style="text-align:center;">
                         <table class="table table-sm">
                             <thead>
