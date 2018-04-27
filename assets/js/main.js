@@ -113,7 +113,16 @@ function validerReinitialiserAll(type){
 }
 
 function validerReinitialiserBtn(type,id){
+	if(confirm("Êtes-vous sûr de reinitialisé le telephone "+ id)){
     console.log("validerReinitialiserBtn "+type+" "+id);
+    $.post(baseUrl+"/ajax/reinitialiserOm", {
+                id: id,
+            }, function(datas){
+				alert("phone "+id+" reinitialisé");
+                console.log(datas);
+               // getdatas(JSON.parse(datas).message.trim());
+            });
+       }
 }
 
 function validerReinitialiserModal(type,id){
@@ -136,13 +145,14 @@ function getdatas(data){
         }
     }
 }
-
 function traitementre(rec) {
     var recunik = rec.split("--")[0].split("/");
     var tab= rec.split("--");
     //console.log(recunik);
     var id_recunik = rec.split("--")[1];
     var chaine = "<tr id=\"roww-"+id_recunik+"\">";
+    var token=id_recunik;
+    var operation=rec.split("--")[0];
 
     if(recunik[0]==1){
         chaine = chaine+"<td class=\"op\">depot</td>";
@@ -166,30 +176,132 @@ function traitementre(rec) {
     }
     chaine = chaine+"<td class=\Date\">"+tab[2]+"</td>";
 
-    chaine = chaine+"<td style=\"margin: 0 auto; text-align: center\"><button id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
+    chaine = chaine+"<td style=\"margin: 0 auto; text-align: center\"><button onclick=\"remonter('"+id_recunik+"','"+operation+"')\" id=\"buttonn-"+id_recunik+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i></button></td>";
     chaine = chaine+"</tr>";
 
     $('#tbody').append(chaine);
+    //console.log(rec);
+    console.log(id_recunik)
 }
+
+function remonter(token,operation){
+	alert(operation+"-"+token);
+	$.post(baseUrl+"/ajax/remonter", {
+                token: token,
+                operation:operation
+            }, function(datas){
+				alert(datas);
+                console.log(datas);
+               // getdatas(JSON.parse(datas).message.trim());
+            });
+	}
 
 function traitementremonter(output) {
     console.log("traitementremonter "+ typeP);
     var datas = [];
+    var chaine="<table class='table table-striped table-condensed'><tr><td>type operation</td><td>numero BBs</td><td>numero client</td><td>montant</td><td>action</td></tr>";
     if(typeP=="OM"){
         $.each(output, function(key, value) {
             $.each(value, function(key, value) {
                 if(value[5]=="Transaction" && value[6].match("Succ") && value[7]=="USSD" && value[9]=="Normal"){
-                    var montant = value[5].match("Cash Out")?value[13]:value[12];
+                    var montant = value[4].match("Cash Out")?value[13]:value[12];
                     //montant = (montant.split(".")[0]);
-                    datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant})
+                    datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant});
+                    chaine+="<tr><td>"+value[4]+"</td><td>"+value[8]+"</td><td>"+value[11]+"</td><td>"+montant+"</td><td><button class=\"btn btn-primary btn-sm\" style=\"background-color: black; border-color: black\" title=\"Remonter ALL OM\" onclick=\"validerRemonterOM('"+value[11]+"','"+montant+"','"+value[8]+"','"+value[1]+"-"+value[2]+"')\"><i style=\"background-color: black\" class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></button></td></tr>";
+                    
                 }
             });
         });
+        chaine+="</table>";
         console.log(datas);
     }
     else{
         console.log("TC");
     }
-    $("#htmlout").html(Object.keys(output).length+" feuilles");
+    
+    
+		
+   // $("#htmlout").html(Object.keys(output).length+" feuilles");
+    $("#htmlout").html(chaine);
 }
-
+function estChifre(c){
+	var tab=["0","1","2","3","4","5","6","7","8","9"],i=0;
+	for(i=0;i<=tab.length;i++){
+		if(tab[i]==c){
+			return true;
+			}
+		}
+	return false;
+	}
+function currencTochaine(curr){
+	var d=curr.split(""),chaine="",j=0;
+	for(j=0;j<d.length;j++){
+		if(d[j]=="."){
+			break;
+			}
+		if(estChifre(d[j])){
+			chaine+=d[j];
+			}
+		}
+	return chaine;
+	}
+function validerRemonterOM(numClient,montant,idphone,jour){
+	//alert(numClient+" "+montant.trim(' ')+" "+getIdphone(idphone)+"jour="+jour);
+	//alert(currencTochaine(montant));
+	var date=$('#date').val().split('/'),type="";
+	if(date[0]>=1 && date[0]<=31 && date[1]>=1 && date[1]<=12 && date[2]>=2018 && date[2]<=2030){
+		if(numClient=="PTUPS"){
+			type=3;//vente de credit
+		}else{
+			if(numClient=="IND02"){
+				type=2; //retrait avec code
+				}else{
+					type=1;//depot ou retrait
+					}
+		 }
+		$.post(baseUrl+"/ajax/findAndremonterexel", {
+					numclient: numClient,
+					montant:currencTochaine(montant),
+					idphone:getIdphone(idphone),
+					date:jour,
+					type:type
+				}, function(datas){
+					//alert(datas);
+					console.log(datas);
+				   // getdatas(JSON.parse(datas).message.trim());
+				});
+		   
+     }else{
+		 alert("veuillez choisir une date correcte");
+		 }
+	}
+function  getIdphone(numphone){
+	var nb="";
+	switch(numphone){
+	 case "786484455":{
+		      nb="1";
+		      break;
+	       }
+	 case "786466013":{
+		      nb="2";
+		      break;
+	       }
+	 case "786466017":{
+		      nb="3";
+		      break;
+	       }
+	 case "786466008":{
+		      nb="4";
+		      break;
+	       }
+	 case "786466023":{
+		      nb="5";
+		      break;
+	       }
+	 case "786466020":{
+		      nb="6";
+		      break;
+	       }
+	}
+	return nb;
+}

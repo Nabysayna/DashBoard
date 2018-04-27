@@ -19,5 +19,12 @@ $app->group('/ajax', function () {
     $this->post('/recherchetc', App\Controllers\AjaxController::class .':recherchetc');
 
     $this->post('/importfile',App\Controllers\UploadsController::class .':importfile');
+    
+    $this->post('/remonter',App\Controllers\AjaxController::class .':remonter');
+    
+    $this->post('/reinitialiserOm',App\Controllers\AjaxController::class .':reinitialiserOm');
+    
+    $this->post('/findAndremonterexel',App\Controllers\AjaxController::class .':findAndremonterexel');
+    
 
 });
