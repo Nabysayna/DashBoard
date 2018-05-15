@@ -206,8 +206,9 @@ function traitementremonter(output) {
                 if(value[5]=="Transaction" && value[6].match("Succ") && value[7]=="USSD" && value[9]=="Normal"){
                     var montant = value[4].match("Cash Out")?value[13]:value[12];
                     //montant = (montant.split(".")[0]);
+                    var id=value[1].split("/")[0]+""+value[1].split("/")[1]+""+value[1].split("/")[2]+""+value[2].split(":")[0]+""+value[2].split(":")[1]+""+value[2].split(":")[2];
                     datas.push({dateop:value[1],heureop:value[2],typeop:value[4],phoneop:value[8],phonecli:value[11],montantop:montant});
-                    chaine+="<tr><td>"+value[4]+"</td><td>"+value[8]+"</td><td>"+value[11]+"</td><td>"+montant+"</td><td><button class=\"btn btn-primary btn-sm\" style=\"background-color: black; border-color: black\" title=\"Remonter ALL OM\" onclick=\"validerRemonterOM('"+value[11]+"','"+montant+"','"+value[8]+"','"+value[1]+"-"+value[2]+"')\"><i style=\"background-color: black\" class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></button></td></tr>";
+                    chaine+="<tr id="+id+"><td>"+value[4]+"</td><td>"+value[8]+"</td><td>"+value[11]+"</td><td>"+montant+"</td><td><button class=\"btn btn-primary btn-sm\" style=\"background-color: black; border-color: black\" title=\"Remonter ALL OM\" onclick=\"validerRemonterOM('"+value[11]+"','"+montant+"','"+value[8]+"','"+value[1]+"-"+value[2]+"')\"><i style=\"background-color: black\" class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></button></td></tr>";
                     
                 }
             });
@@ -248,8 +249,9 @@ function currencTochaine(curr){
 function validerRemonterOM(numClient,montant,idphone,jour){
 	//alert(numClient+" "+montant.trim(' ')+" "+getIdphone(idphone)+"jour="+jour);
 	//alert(currencTochaine(montant));
-	var date=$('#date').val().split('/'),type="";
-	if(date[0]>=1 && date[0]<=31 && date[1]>=1 && date[1]<=12 && date[2]>=2018 && date[2]<=2030){
+	var dat=jour.split("-");
+	var date=dat[0].split("/")[0]+""+dat[0].split("/")[1]+""+dat[0].split("/")[2]+""+dat[1].split(":")[0]+""+dat[1].split(":")[1]+""+dat[1].split(":")[2];
+	alert(date);
 		if(numClient=="PTUPS"){
 			type=3;//vente de credit
 		}else{
@@ -268,13 +270,16 @@ function validerRemonterOM(numClient,montant,idphone,jour){
 				}, function(datas){
 					//alert(datas);
 					console.log(datas);
+					if(datas.reponse=="ok"){
+					    $("#"+date).remove();
+				    }else{
+					    $("#"+date).css('background-color','red');	
+					}
+					//$("#"+date).remove();
 				   // getdatas(JSON.parse(datas).message.trim());
 				});
-		   
-     }else{
-		 alert("veuillez choisir une date correcte");
-		 }
 	}
+	//14268064871
 function  getIdphone(numphone){
 	var nb="";
 	switch(numphone){

@@ -191,16 +191,11 @@
                             <label for="fichier"><i class="fa fa-upload" aria-hidden="true" style=""></i>Importer un fichier Excel</label>
                             <pre><input type="file" class="form-control-file" accept=".xls,.xlsx" name="xlfile" id="xlf"/></pre>
                             <br/>
-                            <div class="form-inline">
-								<label>choisir une date</label>
-								<input id="date" type="text" />
-                            </div>
+                            
                             <div id="htmlout"></div>
                         </div>
                     </div>
-                    <div class="modal-footer" style="margin: 0 auto; text-align: center ">
-                        <button class="btn btn-primary btn-sm">Remonter</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
