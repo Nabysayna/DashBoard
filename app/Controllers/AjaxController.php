@@ -113,7 +113,7 @@ class AjaxController extends Controller {
 	    $data=array('operation' => $_POST['operation'],'tokenPdv' =>$_POST['token'],'token' => '#@Bbsinvest@2142018154#nabyndigoazougoptimussentool56545mflfjg#@');
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://51.254.200.129/testAssane/remonter.php",
+            CURLOPT_URL => "http://51.254.200.129/testkhady/callremonter.php",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -132,7 +132,7 @@ class AjaxController extends Controller {
 			return $reponse->WithJson(array('response' => "Erreur"));
 			}
 		if($res==""){
-			return $response->WithJson(array('response'=> 'Response vide'));
+			return $response->WithJson(array('response'=> ''));
 			}
 		return $response->WithJson(array('rep'=> $res));
 		}
